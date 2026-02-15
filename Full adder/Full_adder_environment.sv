@@ -67,8 +67,8 @@ class driver;
       vif.b   = tr.b;
       vif.cin = tr.cin;
 
-      #1;           // allow combinational settle
-      -> drv_done;  // notify monitor
+      #1;           
+      -> drv_done;  
     end
   endtask
 
@@ -185,10 +185,10 @@ endclass
 
 module testbench;
 
-  // ✅ DECLARE THE INTERFACE INSTANCE
+ 
   full_adder_if intf();
 
-  // ✅ DUT INSTANTIATION
+  
   full_adder dut (
     .a   (intf.a),
     .b   (intf.b),
@@ -200,7 +200,7 @@ module testbench;
   environment env;
 
   initial begin
-    env = new(intf);   // ✅ now intf EXISTS
+    env = new(intf);  
     env.run();
     #50 $finish;
   end
