@@ -65,8 +65,8 @@ class driver;
       vif.a = tr.a;
       vif.b = tr.b;
 
-      #1;              // allow combinational settle
-      -> drv_done;     // notify monitor
+      #1;              
+      -> drv_done;     
     end
   endtask
 
@@ -145,7 +145,7 @@ class environment;
   mailbox #(transaction) gen2drv;
   mailbox #(transaction) mon2scb;
 
-  event drv_done;                 // ✅ declaration ONLY
+  event drv_done;                 
   virtual half_adder_if vif;
 
   function new(virtual half_adder_if vif);
@@ -153,7 +153,7 @@ class environment;
 
     gen2drv = new();
     mon2scb = new();
-    // ❌ NO drv_done = new();
+   
 
     gen = new(gen2drv);
     drv = new(vif, gen2drv, drv_done);
